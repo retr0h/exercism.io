@@ -9,7 +9,7 @@ def encode(data):
         if group_size > 1:
             pairs.append(u'{}{}'.format(group_size, name))
         else:
-            pairs.append(u'{}'.format(name))
+            pairs.append(name)
 
     return ''.join(pairs)
 

@@ -1,5 +1,11 @@
+NORTH = 0
+EAST = 1
+SOUTH = 2
+WEST = 3
+
+
 class Robot(object):
-    def __init__(self, bearing=None, x=0, y=0):
+    def __init__(self, bearing=NORTH, x=0, y=0):
         self._x = x
         self._y = y
         self._bearing = bearing
@@ -26,9 +32,6 @@ class Robot(object):
 
     @property
     def bearing(self):
-        if self._bearing is None:
-            self._bearing = NORTH
-            return self._bearing
         return self._bearing
 
     @bearing.setter
@@ -36,24 +39,10 @@ class Robot(object):
         self._bearing = value
 
     def turn_right(self):
-        if self.bearing == NORTH:
-            self.bearing = EAST
-        elif self.bearing == EAST:
-            self.bearing = SOUTH
-        elif self.bearing == SOUTH:
-            self.bearing = WEST
-        elif self.bearing == WEST:
-            self.bearing = NORTH
+        self.bearing = (self.bearing + 1) % 4
 
     def turn_left(self):
-        if self.bearing == NORTH:
-            self.bearing = WEST
-        elif self.bearing == WEST:
-            self.bearing = SOUTH
-        elif self.bearing == SOUTH:
-            self.bearing = EAST
-        elif self.bearing == EAST:
-            self.bearing = NORTH
+        self.bearing = (self.bearing - 1) % 4
 
     def advance(self):
         if self.bearing == NORTH:
@@ -74,23 +63,3 @@ class Robot(object):
                 self.turn_right()
             elif instruction == 'A':
                 self.advance()
-
-
-class NORTH(object):
-
-    pass
-
-
-class EAST(object):
-
-    pass
-
-
-class SOUTH(object):
-
-    pass
-
-
-class WEST(object):
-
-    pass

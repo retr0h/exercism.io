@@ -1,4 +1,4 @@
-map = {
+ALLERGENS = {
     'eggs': 1,
     'peanuts': 2,
     'shellfish': 4,
@@ -13,7 +13,8 @@ map = {
 class Allergies(object):
     def __init__(self, score):
         self.score = score
-        self.lst = [allergy for allergy in map if self.is_allergic_to(allergy)]
+        self.lst = [allergy
+                    for allergy in ALLERGENS if self.is_allergic_to(allergy)]
 
     def is_allergic_to(self, allergen):
-        return map[allergen] & self.score
+        return ALLERGENS[allergen] & self.score

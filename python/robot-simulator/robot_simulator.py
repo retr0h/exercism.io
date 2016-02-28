@@ -31,7 +31,7 @@ class Robot(object):
             self.x += -1
 
     def simulate(self, instructions):
-        for instruction in list(instructions):
+        for instruction in instructions:
             if instruction == 'L':
                 self.turn_left()
             elif instruction == 'R':

@@ -7,7 +7,7 @@ def is_pangram(phrase):
     being A quick brown fox jumps over the lazy dog.
     """
     seen = dict.fromkeys(string.ascii_lowercase, 0)
-    for c in list(phrase):
+    for c in phrase:
         seen[c.lower()] = 1
 
     if 0 in seen.values():
